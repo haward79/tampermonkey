@@ -28,34 +28,40 @@ window.addEventListener('DOMContentLoaded', function () {
 
 });
 
-window.addEventListener('keypress', function () {
+window.addEventListener('keypress', function (e) {
 
-	// Set error flag.
-	let errorFlag = false;
+    alert(e.keyCode);
 
-	// Clear blocker.
-	let Blocker = document.getElementsByClassName('RnEpo   _Yhr4    ');
+	if(e.keyCode == 99) {
 
-	if (Blocker.length > 0) {
-		Blocker[0].style.display = 'none';
-	}
-	else {
-		errorFlag = true;
-	}
+		// Set error flag.
+		let errorFlag = false;
 
-	// Restore overflow scrolling.
-	let Body = document.getElementsByTagName('body');
+		// Clear blocker.
+		let Blocker = document.getElementsByClassName('RnEpo   _Yhr4    ');
 
-	if (Body.length > 0) {
-		Body[0].style.overflow = 'auto';
-	}
-	else {
-		errorFlag = true;
-	}
+		if (Blocker.length > 0) {
+			Blocker[0].style.display = 'none';
+		}
+		else {
+			errorFlag = true;
+		}
 
-	// Check error flag.
-	if (errorFlag) {
-		alert('CANNOT perform the operation.');
+		// Restore overflow scrolling.
+		let Body = document.getElementsByTagName('body');
+
+		if (Body.length > 0) {
+			Body[0].style.overflow = 'auto';
+		}
+		else {
+			errorFlag = true;
+		}
+
+		// Check error flag.
+		if (errorFlag) {
+			alert('CANNOT perform the operation.');
+		}
+
 	}
 
 });

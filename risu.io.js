@@ -19,24 +19,29 @@ window.addEventListener('load', function () {
     msg.style.margin = '0px auto';
     msg.style.fontSize = '30px';
 
-    dig();
+    document.addEventListener('keypress', function (e) {
+
+        if (e.keyCode == 100) {
+            dig();
+            alert('Done');
+        }
+
+    });
 
 });
 
 function dig() {
+
     let msg = document.getElementById('ad_javascripts');
     msg.innerHTML = '';
 
     // Images
-    let imgs = document.getElementsByTagName('img');
+    let imgs = document.getElementsByTagName('canvas');
     let img = null;
 
-    for (let i = 0, countI = imgs.length; i < countI; ++i) {
-        img = imgs[i].src;
-
-        if (img.search('risu.io') == -1) {
-            msg.innerHTML = msg.innerHTML + '<a href="' + img + '" target="_blank">Image ' + ++counter + '</a><br />';
-        }
+    for (let i = 0, countI = imgs.length - 1; i < countI; ++i) {
+        img = imgs[i].toDataURL('image/png', 1);
+        window.open(img);
     }
 
     // Videos
@@ -51,9 +56,5 @@ function dig() {
         }
     }
 
-    // Check
-    if (msg.innerHTML == '') {
-        setTimeout(dig, 1000);
-    }
 }
 
